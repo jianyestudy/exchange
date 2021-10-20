@@ -61,7 +61,7 @@ class CardController extends Controller
        $result->phone = $requestData['phone'];
        $result->save();
 
-        return  back()->with('success', '兑换成功！');
+        return  back()->with('success', '兑换成功！,正在为您自动跳转...');
     }
     /**
      * 删除卡号
@@ -100,7 +100,8 @@ class CardController extends Controller
             $builder->where('is_use', 0);
         }else {
             $view = 'used';
-            $builder->where('is_use',1);
+            $builder->where('is_use',1)
+                    ->orderByDesc('use_time');
         }
 
         if ($request->user()->admin === 0) {
@@ -130,6 +131,7 @@ class CardController extends Controller
         $data = $builder->with('user')
             ->whereNull('deleted_at')
             ->paginate(10);
+
 
         return view($view)->with('result', $data);
     }
@@ -173,10 +175,16 @@ class CardController extends Controller
              return back()->withErrors('数量超出！');
          }
 
+        $max = Card::query()
+            ->max('card_number');
+
+         if (empty($max)) {
+             $max = 100001;
+         }
          for ($i = 1; $i <= $number; $i++){
              $data[] = [
                  'user_id'      =>  $request->user()->id,
-                 'card_number'  =>  \Faker\Provider\Uuid::randomNumber(9),
+                 'card_number'  =>  $max++,
                  'card_password' =>  \Faker\Provider\Uuid::randomNumber(6),
                  'created_at' => Carbon::now()->toDateTime(),
                  'updated_at' => Carbon::now()->toDateTime()

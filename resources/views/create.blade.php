@@ -87,7 +87,7 @@
 
 
                                  <div class="d-inline-block w-100 text-center p-3">
-                                    <a class="bg-primary iq-sign-btn" {{ Route('logout') }} role="button">退出登录<i class="ri-login-box-line ml-2"></i></a>
+                                    <a class="bg-primary iq-sign-btn" href="{{ Route('logout') }}" role="button">退出登录<i class="ri-login-box-line ml-2"></i></a>
                                  </div>
                               </div>
                            </div>

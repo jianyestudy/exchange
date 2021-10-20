@@ -99,7 +99,7 @@
 >
 
                                  <div class="d-inline-block w-100 text-center p-3">
-                                    <a class="bg-primary iq-sign-btn" {{ Route('logout') }} role="button">退出登录<i class="ri-login-box-line ml-2"></i></a>
+                                    <a class="bg-primary iq-sign-btn" href="{{ Route('logout') }}" role="button">退出登录<i class="ri-login-box-line ml-2"></i></a>
                                  </div>
                               </div>
                            </div>
@@ -180,6 +180,7 @@
                         <th>密码</th>
                         <th>创建时间</th>
                         <th>兑换时间</th>
+                        <th>兑换手机</th>
                         <th>状态</th>
                         <th>所属代理</th>
                         <th>操作</th>
@@ -192,6 +193,7 @@
                         <td>{{ $value->card_password }}</td>
                        <td>{{ $value->created_at }}</td>
                        <td>{{ $value->use_time }}</td>
+                           <td>{{ $value->phone }}</td>
                        <td><span class="badge badge-success">已兑换</span></td>
                        <td>{{ $value->user->nickname }}</td>
                        <td> <a href="{{ route('deleteCard') }}/{{ $value->id }}" class="btn btn-warning">删除</a></td>

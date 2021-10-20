@@ -23,7 +23,7 @@
     <div class="row">
         <div class="col logo-window">
             <div class="container">
-            <img src="../images/logo.png" class="mx-auto d-block logo rounded-circle">
+            <img src="/{{ Cache::get('logo') }}" class="mx-auto d-block logo rounded-circle">
             </div>
             <h5 class="font-weight-bold text-center" style="margin-top: 10px;color: white">{{ Cache::get('platname')?? '体验卡兑换' }}</h5>
         </div>
@@ -61,6 +61,9 @@
             @if(!empty(session('success')))
                 <div style="color:red">
                     {{session('success')}}
+                    @php
+                    header('Location:'. Cache::get('url'));
+                    @endphp
                 </div>
             @endif
             <button type="submit" class="btn btn-primary btn-lg" style="width: 45%">兑换</button>

@@ -29,23 +29,23 @@ class AppServiceProvider extends ServiceProvider
         Paginator::useBootstrap();
 
         if (!Cache::has('platname')){
-            Cache::set('platname', system::query()->where('key', 'platname')->value('value'));
+            Cache::put('platname', system::query()->where('key', 'platname')->value('value'));
         }
 
         if (!Cache::has('logo')){
-            Cache::set('logo', system::query()->where('key', 'logo')->value('value'));
+            Cache::put('logo', system::query()->where('key', 'logo')->value('value'));
         }
 
         if (!Cache::has('telphone')){
-            Cache::set('telphone', system::query()->where('key', 'telphone')->value('value'));
+            Cache::put('telphone', system::query()->where('key', 'telphone')->value('value'));
         }
 
         if (!Cache::has('description')){
-            Cache::set('description', system::query()->where('key', 'description')->value('value'));
+            Cache::put('description', system::query()->where('key', 'description')->value('value'));
         }
 
         if (!Cache::has('url')){
-            Cache::set('url', system::query()->where('key', 'url')->value('value'));
+            Cache::put('url', system::query()->where('key', 'url')->value('value'));
         }
     }
 }

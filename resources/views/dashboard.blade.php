@@ -142,7 +142,7 @@
                                     <div class="d-flex align-items-center justify-content-between">
                                         <div class="rounded-circle iq-card-icon bg-danger"><i class="ri-calendar-todo-fill"></i></div>
                                         <div class="text-right">
-                                            <h2 class="mb-0"><span class="counter">{{ ($card->sum - $card->used) ?? 0 }}</span></h2>
+                                            <h2 class="mb-0"><span class="counter">{{ ($cardSum - $card->sum) ?? 0 }}</span></h2>
                                             <h5 class="">剩余卡数</h5>
                                         </div>
                                     </div>

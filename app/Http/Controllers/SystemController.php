@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\system;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
@@ -50,6 +51,11 @@ class SystemController extends Controller
             return back()->withErrors('保存失败');
         }
 
+        Cache::put('platname', system::query()->where('key', 'platname')->value('value'));
+        Cache::put('logo', system::query()->where('key', 'logo')->value('value'));
+        Cache::put('telphone', system::query()->where('key', 'telphone')->value('value'));
+        Cache::put('description', system::query()->where('key', 'description')->value('value'));
+        Cache::put('url', system::query()->where('key', 'url')->value('value'));
         return back()->with('success', '保存成功');
     }
 }
